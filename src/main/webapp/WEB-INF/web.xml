@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+  <display-name>doSmth</display-name>
+
+
+  <!--<servlet>
+    <servlet-name>MyServlets</servlet-name>
+    <servlet-class>com.epam.servlets.MyServlets</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MyServlets</servlet-name>
+    <url-pattern>/myServl</url-pattern>
+  </servlet-mapping>-->
+
+
+</web-app>
