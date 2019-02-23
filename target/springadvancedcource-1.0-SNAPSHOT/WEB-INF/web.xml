@@ -3,18 +3,18 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          id="WebApp_ID" version="3.1">
-  <display-name>doSmth</display-name>
+  <display-name>Spring Advanced</display-name>
 
 
-  <!--<servlet>
-    <servlet-name>MyServlets</servlet-name>
-    <servlet-class>com.epam.servlets.MyServlets</servlet-class>
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>MyServlets</servlet-name>
-    <url-pattern>/myServl</url-pattern>
-  </servlet-mapping>-->
-
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
 </web-app>
