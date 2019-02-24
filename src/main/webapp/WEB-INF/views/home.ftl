@@ -1,7 +1,6 @@
 <html lang="en">
     <head>
-        <title>SpringDamn</title>
-
+        <title>SpringMVC</title>
     </head>
     <body>
         <div>
