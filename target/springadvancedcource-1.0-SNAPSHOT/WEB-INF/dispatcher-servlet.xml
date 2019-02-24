@@ -14,16 +14,29 @@
 
     <context:component-scan base-package="beans"/>
 
-    <!--<mvc:annotation-driven/>-->
+    <mvc:annotation-driven/>
 
-    <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+
+    <bean
+            class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="WEB-INF/views"/>
+    </bean>
 
 
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
-    </bean>
+    </bean>-->
 
     <!--<mvc:interceptors>-->
         <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
@@ -32,6 +45,6 @@
         <!--</bean>-->
     <!--</mvc:interceptors>-->
 
-   <!-- <mvc:view-controller path="/" view-name="index"/>-->
+   <mvc:view-controller path="/" view-name="home"/>
 
 </beans>

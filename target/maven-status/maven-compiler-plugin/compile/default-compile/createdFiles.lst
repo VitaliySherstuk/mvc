@@ -16,7 +16,6 @@ beans\services\discount\BirthdayStrategy.class
 beans\aspects\CounterAspect.class
 beans\daos\db\BookingDAOImpl.class
 beans\daos\EventDAO.class
-beans\Controllers\MyControl.class
 beans\configuration\db\DbSessionFactory.class
 beans\models\Auditorium.class
 beans\daos\inmemory\InMemoryUserDAO.class
