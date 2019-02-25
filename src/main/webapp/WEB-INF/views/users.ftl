@@ -4,8 +4,7 @@
     </head>
     <body>
         <div>
-            Hello!!!
+            Page users
         </div>
-        <a href="localhost:8080/users"/>
     </body>
 </html>

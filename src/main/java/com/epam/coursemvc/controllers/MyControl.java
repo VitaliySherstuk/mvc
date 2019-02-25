@@ -1,20 +1,16 @@
-/*
-package beans.Controllers;
+package com.epam.coursemvc.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/mvc")
+@RequestMapping("/users")
 public class MyControl {
 
-    @GetMapping(value = "/mvc")
+    @RequestMapping(method=RequestMethod.GET)
     public String myMeth(){
 
-        return "index";
+        return "users";
     }
 }
-*/
