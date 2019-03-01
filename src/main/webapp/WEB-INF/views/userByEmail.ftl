@@ -13,25 +13,26 @@
          </div>
          </br>
          </br>
-         <div>
-            <table border="1">
-                <thead>
-                     <tr>
-                         <th>email</th>
-                         <th>name</th>
-                         <th>birthday</th>
-                     </tr>
-                </thead>
-                <tbody>
-                    <#list users as user>
-                       <tr>
-                           <td>${user.email}</td>
-                           <td>${user.name}</td>
-                           <td>${user.birthday}</td>
-                       </tr>
-                    </#list>
-                </tbody>
-            </table>
-         </div>
+         <#if present??>
+             <div>
+                <table border="1">
+                    <thead>
+                         <tr>
+                             <th>email</th>
+                             <th>name</th>
+                             <th>birthday</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                           <tr>
+                               <td>${user.email}</td>
+                               <td>${user.name}</td>
+                               <td>${user.birthday}</td>
+                           </tr>
+                    </tbody>
+                </table>
+             </div>
+         </#if>
+
     </body>
 </html>

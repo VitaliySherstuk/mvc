@@ -11,6 +11,9 @@
             <a href="/users">UserPage</a>
         </div>
         <div>
+            <a href="/auditoriums">Auditoriums</a>
+        </div>
+        <div>
             <a href="/events">EventPage</a>
         </div>
     </body>

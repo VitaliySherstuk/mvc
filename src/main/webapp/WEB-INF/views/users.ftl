@@ -26,13 +26,19 @@
                 <input id="find_by_name" name="username" type="text" placeholder="username"/>
                 <input id="submit_by_name" name="submit" type="submit" placeholder="submit"/>
             </form>
+            <#if notUsersByName??>
+               <div>User does not exist</div>
+            </#if>
         </div>
         </br>
         <div>
             <form method="post" action="/users/userByEmail" onclick = "return true">
                 <input id="find_by_email" name="email" type="text" placeholder="email"/>
-                <input id="submit_bu_email" name="submit" type="submit" placeholder="submit"/>
+                <input id="submit_by_email" name="submit" type="submit" placeholder="submit"/>
             </form>
+            <#if notexist??>
+                <div>User does not exist</div>
+            </#if>
         </div>
     </body>
 </html>

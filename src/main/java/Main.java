@@ -25,6 +25,7 @@ public class Main {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
+
         AuditoriumService auditoriumService = (AuditoriumService) ctx.getBean("auditoriumServiceImpl");
         BookingService bookingService = (BookingService) ctx.getBean("bookingServiceImpl");
         EventService eventService = (EventService) ctx.getBean("eventServiceImpl");
@@ -42,6 +43,7 @@ public class Main {
 
         userService.register(new User(email, name, LocalDate.now()));
         userService.register(new User("laory@yandex.ru", name, LocalDate.of(1992, 4, 29)));
+        userService.register(new User("y@r.ru", "vasy", LocalDate.now()));
 
         User userByEmail = userService.getUserByEmail(email);
         System.out.println("User with email: [" + email + "] is " + userByEmail);

@@ -49,10 +49,18 @@ public class UserController {
 
         LOG.info("in getUserByName meth".toUpperCase());
         LOG.info("username: " + username);
-        LOG.info("users from DB: " + userService.getUsersByName(username));
 
         List<User> userList = userService.getUsersByName(username);
-        model.addAttribute("users", userList);
+        LOG.info("users from DB: " + userList.size());
+        LOG.info("users from DB: " + userList);
+        if(userList.size()>0){
+            model.addAttribute("present", true);
+            model.addAttribute("users", userList);
+        }
+        else{
+            model.addAttribute("notUsersByName", true);
+            return "users";
+        }
         return "userByName";
     }
 
@@ -63,8 +71,20 @@ public class UserController {
         LOG.info("username: " + email);
         LOG.info("users from DB: " + userService.getUserByEmail(email));
 
-        List<User> userList = userService.getUsersByName(email);
-        model.addAttribute("users", userList);
+        User user = userService.getUserByEmail(email);
+        LOG.info(user);
+        if(user==null){
+
+            model.addAttribute("notexist", true);
+
+            return "users";
+        }
+        else {
+
+            model.addAttribute("present", true);
+            model.addAttribute("user", user);
+        }
+
         return "userByEmail";
     }
 }
