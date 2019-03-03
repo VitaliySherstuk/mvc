@@ -12,7 +12,8 @@
         </div>
         </br>
         </br>
-        <div>
+        <div id="123">
+           <label for="123">Create Event</label>
            <form method="post" action="/events/addEvent" onclick="return true">
                 <input id="event_name" name="eventName" type="text" placeholder="eventname"/>
                 <input id="event_base_price" name="basePrice" type="text" placeholder="base price"/>
@@ -69,6 +70,7 @@
         </br>
         </br>
         <div>
+            <label>Get Event</label>
             <form method="post" action="/events/getEvent" onclick="return true">
                 <input id="in_get_certain_events_n" name="eventName" type="text" placeholder="event name"/>
                 <input id="in_get_certain_events_d" name="date" type="date"/>
@@ -90,7 +92,10 @@
                 <input id="e_submit_get_all_events" name="submit" type="submit"/>
             </form>
         </div>
+        </br>
+                </br>
         <div>
+            <label>Remove Event</label>
             <form method="post" action="/events/removeEvent" onclick="return true">
                             <input id="in_get_certain_events_n" name="eventName" type="text" placeholder="event name"/>
                             <input id="in_get_certain_events_d" name="date" type="date"/>

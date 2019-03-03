@@ -7,17 +7,51 @@
          <div id="linkHomePage">
              <ul>
                 <li class="li-style"><a href="/">Home Page</a></li>
+                <li class="li-style"><a href="/booking">Booking</a></li>
                 <li class="li-style">Tickets</li>
              </ul>
          </div>
+         </br>
+         </br>
          <div>
-             <form method="post" action="events/addEvent" onclick="return true">
-                <input id="event_name" name="eventName" type="text" placeholder="eventname">
-                 <input id="event_base_price" name="basePrice" type="text" placeholder="base price">
-                 <input id="date" name="date" type="text" placeholder="date(format: yyyy MM dd)">
-                 <input id="time" name="time" type="text" placeholder="time (format: HH:mm)">
-                 <div id="module_rate">
-             </form>
+         <table border="1">
+            <thead>
+                <tr>
+                <th>id</th>
+                <th>event_name</th>
+                <th>date</th>
+                <th>rate</th>
+                <th>auditorium</th>
+                <th>seats</th>
+                <th>user</th>
+                <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <#list tickets as ticket>
+                    <tr>
+                        <td>${ticket.id}</td>
+                        <td>${ticket.event.name}</td>
+                        <td>${ticket.dateTime}</td>
+                        <td>${ticket.event.rate}</td>
+                        <td>${ticket.event.auditorium.name}</td>
+                        <td>${ticket.seats}</td>
+                        <td>${ticket.user.email}</td>
+                        <td>${ticket.price}</td>
+                    </tr>
+                </#list>
+            </tbody>
+         </table>
+         </div>
+         </br>
+         </br>
+         <div>
+
+                <form method="post" action="/booking/pdf" produces = "application/pdf" onclick="return true">
+                    <label>Download</lebel>
+                    <input name="id" type="hidden" value="${id}"/>
+                    <input name="submit" type="submit"/>
+                </form>
          </div>
     </body>
 <html>

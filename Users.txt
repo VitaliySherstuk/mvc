@@ -1,0 +1,2 @@
+[{"id":1,"email":"dmitriy.vbabichev@gmail.com","name":"Dmytro Babichev","birthday":{"year":2019,"month":3,"day":2}},
+{"id":1,"email":"vasy@gmail.com","name":"vasy","birthday":{"year":2019,"month":1,"day":1}}]

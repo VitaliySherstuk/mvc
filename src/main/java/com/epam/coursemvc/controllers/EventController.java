@@ -4,6 +4,7 @@ import beans.models.Event;
 import beans.models.Rate;
 import beans.services.AuditoriumService;
 import beans.services.EventService;
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -58,6 +63,8 @@ public class EventController {
                 auditoriumService.getByName(auditorium));
         eventService.create(event);
         model.addAttribute("message", true);
+        Gson gson = new Gson();
+        LOG.info(gson.toJson(event));
         return "events";
     }
 

@@ -1,6 +1,6 @@
 <html lang="en">
 
-<head>
+    <head>
         <title>SpringMVC</title>
         <link href="/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
@@ -13,6 +13,28 @@
            </ul>
            </br>
            </br>
-        <div>ALL AUDITORIUMS</div>
+        <div>
+
+            <table border="1">
+                                        <thead>
+                                             <tr>
+                                                 <th>auditorium name</th>
+                                                 <th>seats</th>
+                                                 <th>VIP seats</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                            <#list auditoriums as auditorium>
+                                               <tr>
+                                                   <td>${auditorium.name}</td>
+                                                   <td>${auditorium.seatsNumber}</td>
+                                                   <td>${auditorium.vipSeats}</td>
+                                               </tr>
+                                            </#list>
+                                        </tbody>
+                                    </table>
+
+
+        </div>
     </body>
 </html>

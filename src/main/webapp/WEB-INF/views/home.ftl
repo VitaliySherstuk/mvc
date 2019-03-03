@@ -16,5 +16,12 @@
         <div>
             <a href="/events">EventPage</a>
         </div>
+        <div>
+             <a href="/booking">Booking</a>
+        </div>
+        <div>
+                     <a href="/load">Load from file</a>
+                </div>
+
     </body>
 </html>

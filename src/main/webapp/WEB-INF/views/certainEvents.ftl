@@ -11,17 +11,21 @@
               <li class="li-style"><a href="/events">Events</a></li>
               <li class="li-style">Certain Events</li>
            </ul>
-
-<#if notCertainEvent??>
+</div>
+</br>
+</br>
+<div>
+            <#if notCertainEvent??>
                 <div>Event is not exist</div>
             </#if>
             <#if certainEvent??>
-
+                <div>
                     <div>${event.name}</div>
+                    <div>${event.auditorium.name}</div>
                     <div>${event.rate}</div>
-                    <div></div>
-                    <div></div>
-
+                    <div>${event.dateTime}</div>
+                </div>
             </#if>
+</div>
             </body>
             </html>

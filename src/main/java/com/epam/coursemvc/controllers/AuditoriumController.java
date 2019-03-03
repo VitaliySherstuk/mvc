@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/auditoriums")
 public class AuditoriumController {
@@ -21,20 +23,28 @@ public class AuditoriumController {
         return "auditoriums";
     }
 
-
-    @RequestMapping(value="/getAllAuditorium", method=RequestMethod.GET)
-    public String getAllAuditoruimsPage(Model model) {
-        model.addAttribute("auditoriums", auditoriumService.getAuditoriums());
-        return "allAuditoriums";
-    }
-
     @RequestMapping(value="/getAuditorium", method = RequestMethod.POST)
     public String getAditoriumByName(@RequestParam(name = "nameAuditorium") String nameAuditorium, Model model) {
 
         Auditorium auditorium = auditoriumService.getByName(nameAuditorium);
+        if(auditorium==null){
+            model.addAttribute("notAuditorium", true);
+            return "auditoriums";
+        }
         model.addAttribute("auditorium", auditorium);
-
         return "certainAuditorium";
+    }
+
+    @RequestMapping(value="/getAllAuditorium", method=RequestMethod.GET)
+    public String getAllAuditoruims(Model model) {
+
+        List<Auditorium> auditoriumList = auditoriumService.getAuditoriums();
+        if(auditoriumList.size()>0){
+            model.addAttribute("auditoriums", auditoriumList);
+            return "allAuditoriums";
+        }
+        model.addAttribute("notAuditoriums", true);
+        return "auditorium";
     }
 
 

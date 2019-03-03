@@ -13,6 +13,24 @@
            </ul>
            </br>
            </br>
-        <div>AUDITORIUM</div>
+        <div>
+            <table border="1">
+                            <thead>
+                                 <tr>
+                                     <th>auditorium name</th>
+                                     <th>seats</th>
+                                     <th>VIP seats</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                   <tr>
+                                       <td>${auditorium.name}</td>
+                                       <td>${auditorium.seatsNumber}</td>
+                                       <td>${auditorium.vipSeats}</td>
+                                   </tr>
+                            </tbody>
+                        </table>
+        </div>
+
     </body>
 </html>

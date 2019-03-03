@@ -27,7 +27,8 @@
                     <#list events as event>
                        <tr>
                            <td>${event.name}</td>
-
+                           <td>${event.dateTime}</td>
+                           <td>${event.auditorium.name}</td>
                            <td>${event.rate}</td>
                        </tr>
                     </#list>

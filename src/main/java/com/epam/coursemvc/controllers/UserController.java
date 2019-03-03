@@ -2,6 +2,7 @@ package com.epam.coursemvc.controllers;
 
 import beans.models.User;
 import beans.services.UserService;
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,15 +33,18 @@ public class UserController {
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String createUser(@RequestParam(value="username") String username,
                                    @RequestParam(value="email") String email,
-                                   @RequestParam(value="date") String date, Model model){
+                                   @RequestParam(value="date") String date,
+                                    Model model){
 
         LOG.info("username: " + username);
         LOG.info("email: " + email);
         LOG.info("date: " + date);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
-        User user = new User(email, username, LocalDate.parse(date, formatter));
+        User user = new User(email, username, LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE));
         model.addAttribute("result", "user was created");
         userService.register(user);
+        Gson gson = new Gson();
+
+        LOG.info(gson.toJson(user));
         return "users";
     }
 

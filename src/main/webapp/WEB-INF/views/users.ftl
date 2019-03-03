@@ -13,15 +13,17 @@
         </br>
         </br>
         <div>
+            <label>Create User</label>
            <form method="post" action="/users/addUser" onclick = "return true">
                 <input id="username" name="username" type="text" placeholder="username"/>
                 <input id="email" name="email" type="text" placeholder="email"/>
-                <input id="date" name="date" type="text" placeholder="date (format: yyyy MM dd)"/>
+                <input id="date" name="date" type="date"/>
                 <input id="submit" name="submit" type="submit" placeholder="submit"/>
            </form>
         </div>
         </br>
         <div>
+            <label>Get User by name</label>
             <form method="post" action="/users/userByName" onclick = "return true">
                 <input id="find_by_name" name="username" type="text" placeholder="username"/>
                 <input id="submit_by_name" name="submit" type="submit" placeholder="submit"/>
@@ -32,6 +34,7 @@
         </div>
         </br>
         <div>
+            <label>Get User by email</label>
             <form method="post" action="/users/userByEmail" onclick = "return true">
                 <input id="find_by_email" name="email" type="text" placeholder="email"/>
                 <input id="submit_by_email" name="submit" type="submit" placeholder="submit"/>

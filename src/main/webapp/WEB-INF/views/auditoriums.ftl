@@ -12,6 +12,31 @@
            </ul>
            </br>
            </br>
-        <div>HELLO</div>
+        <div>
+            <label>Get Auditorium</label>
+            <form method="post" action="/auditoriums/getAuditorium" onclick="return true">
+                            <input id="au_name" name="nameAuditorium" type="text" placeholder="auditoriumname"/>
+                            <div>
+                                <input id="submit" name="submit" type="submit" placeholder="submit"/>
+                            </div>
+             </form>
+            <#if notAuditorium??>
+               <div>Auditotium does not exist</div>
+                    </#if>
+        </div>
+        </br>
+        </br>
+        <div>
+        <label>Get all auditoriums</label>
+                    <form method="get" action="/auditoriums/getAllAuditorium" onclick="return true">
+
+                        <div>
+                            <input id="submit" name="submit" type="submit" placeholder="submit"/>
+                        </div>
+                    </form>
+<#if notAuditorium??>
+               <div>Auditotiums do not exist</div>
+            </#if>
+                </div>
     </body>
 </html>
