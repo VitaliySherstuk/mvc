@@ -34,12 +34,20 @@ public class UserController {
     public String createUser(@RequestParam(value="username") String username,
                                    @RequestParam(value="email") String email,
                                    @RequestParam(value="date") String date,
+                                   @RequestParam(value="role") String role,
                                     Model model){
 
         LOG.info("username: " + username);
         LOG.info("email: " + email);
         LOG.info("date: " + date);
-        User user = new User(email, username, LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE));
+        LOG.info("role: " + role);
+        User user = null;
+        if(!role.equals("ROLE_USER")){
+            user = new User(email, username, LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE), role);
+        }
+        else{
+             user = new User(email, username, LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE));
+        }
         model.addAttribute("result", "user was created");
         userService.register(user);
         Gson gson = new Gson();

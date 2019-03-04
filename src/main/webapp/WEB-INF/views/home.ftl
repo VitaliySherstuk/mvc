@@ -22,6 +22,12 @@
         <div>
                      <a href="/load">Load from file</a>
                 </div>
-
+        </br>
+        </br>
+        <div>
+            <form id="logout" action="/j_spring_security_logout" method="get">
+                    <input  name="submit" type="submit" />
+                </form>
+        </div>
     </body>
 </html>

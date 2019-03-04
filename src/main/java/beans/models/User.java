@@ -10,10 +10,15 @@ import java.time.LocalDate;
  */
 public class User {
 
+    private static final String DEFAULT_ROLE = "USER_ROLE,";
+    private static final String DELIMETER = ",";
+
     private long      id;
     private String    email;
     private String    name;
     private LocalDate birthday;
+    private String password;
+    private String role;
 
     public User() {
     }
@@ -23,6 +28,24 @@ public class User {
         this.email = email;
         this.name = name;
         this.birthday = birthday;
+        this.role = DEFAULT_ROLE;
+    }
+
+    public User(String email, String name, LocalDate birthday, String role) {
+        this.email = email;
+        this.name = name;
+        this.birthday = birthday;
+        this.role = DEFAULT_ROLE;
+        setRole(role);
+    }
+
+    public User(String email, String name, LocalDate birthday, String password, String role) {
+        this.email = email;
+        this.name = name;
+        this.birthday = birthday;
+        this.password = password;
+        this.role = DEFAULT_ROLE;
+        setRole(role);
     }
 
     public User(String email, String name, LocalDate birthday) {
@@ -63,6 +86,23 @@ public class User {
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role)
+    {
+        this.role += role+DELIMETER;;
     }
 
     @Override

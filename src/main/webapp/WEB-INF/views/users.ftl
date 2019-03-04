@@ -18,6 +18,18 @@
                 <input id="username" name="username" type="text" placeholder="username"/>
                 <input id="email" name="email" type="text" placeholder="email"/>
                 <input id="date" name="date" type="date"/>
+                </br>
+                <div id="module_rate">
+                <labe>Role</label>
+                                    <div>
+                                        <input id="role_user" name="role" type="radio" value="ROLE_USER"/>
+                                        <label for="event_rate_high">USER</label>
+                                    </div>
+                                    <div>
+                                        <input id="role_admin" name="role" type="radio" value="ROLE_ADMIN"/>
+                                        <label for="event_rate_mid">ADMIN</label>
+                                    </div>
+                                </div>
                 <input id="submit" name="submit" type="submit" placeholder="submit"/>
            </form>
         </div>
