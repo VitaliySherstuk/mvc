@@ -12,12 +12,7 @@ import org.springframework.context.annotation.Scope;
 
 import java.util.Arrays;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 13/2/16
- * Time: 6:10 PM
- */
+
 @Configuration
 public class TestEventServiceConfiguration extends TestAuditoriumConfiguration {
 

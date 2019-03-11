@@ -7,46 +7,56 @@
                     http://www.springframework.org/schema/security
                     http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-    <http auto-config="true" use-expressions="true">
+    <http>
 
         <intercept-url pattern="/login" access="isAnonymous()"/>
+        <intercept-url pattern="/registration/**" access="isAnonymous()"/>
+        <intercept-url pattern="/resources/**" access="permitAll"/>
         <intercept-url pattern="/**/ticketForEvent" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <logout logout-success-url="/login" logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID"/>
+        <logout logout-success-url="/login" logout-url="/j_spring_security_logout"/>
         <csrf disabled="true"/>
-
+        <!--<intercept-url pattern="*" access="isRememberMe()"/>-->
        <form-login
                 login-page="/login"
                 login-processing-url="/j_spring_security_check"
                 username-parameter="j_username"
                 password-parameter="j_password"
-                default-target-url="/"
+                authentication-success-forward-url="/"
                 authentication-failure-url="/login"
-                always-use-default-target='true'
-        />
 
-        <!--<custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>-->
+        />
+       <remember-me remember-me-parameter="remember-me"/>
     </http>
 
-
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
+        <authentication-provider ref="authenticationProvider">
+           <!--<user-service>
                 <user name="user" password="user" authorities="ROLE_USER"/>
                 <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
-            </user-service>
+            </user-service>-->
             <!--<password-encoder ref="encoder" />-->
         </authentication-provider>
     </authentication-manager>
 
 
-    <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-         <!-- class="org.springframework.security.providers.dao.DaoAuthenticationProvider">-->
+    <!--<beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:ref bean="authenticationProvider" />
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>-->
+
+    <beans:bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <beans:property name="userDetailsService" ref="userDetailsServiceImpl"/>
-        <!--<beans:property name="passwordEncoder" ref="encoder"/>-->
+        <beans:property name="passwordEncoder" ref="encoder"/>
     </beans:bean>
 
     <beans:bean id="userDetailsServiceImpl" class="beans.services.UserDetailsServiceImpl"/>
 
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
 
 </beans:beans>

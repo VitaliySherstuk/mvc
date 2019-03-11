@@ -26,8 +26,9 @@
         </br>
         <div>
             <form id="logout" action="/j_spring_security_logout" method="get">
-                    <input  name="submit" type="submit" />
+                    <input  name="logout" value="logout"  type="submit" />
                 </form>
         </div>
+
     </body>
 </html>

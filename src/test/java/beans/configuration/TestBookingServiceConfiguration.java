@@ -15,12 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 13/2/16
- * Time: 3:36 PM
- */
+
+
+
 @Configuration
 public class TestBookingServiceConfiguration {
 

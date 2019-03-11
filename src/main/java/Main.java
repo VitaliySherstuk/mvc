@@ -6,6 +6,7 @@ import beans.services.*;
 import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+       /* ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
 
         AuditoriumService auditoriumService = (AuditoriumService) ctx.getBean("auditoriumServiceImpl");
@@ -134,15 +135,18 @@ public class Main {
         System.out.println();
         System.out.println("DiscountAspect.getDiscountStatistics() = " + DiscountAspect.getDiscountStatistics());
         System.out.println();
-        System.out.println("LuckyWinnerAspect.getLuckyUsers() = " + LuckyWinnerAspect.getLuckyUsers());
+        System.out.println("LuckyWinnerAspect.getLuckyUsers() = " + LuckyWinnerAspect.getLuckyUsers());*/
 
         /*creating JSON Event and User*/
 
-        User myUser = userService.getUserByEmail(email);
+        /*User myUser = userService.getUserByEmail(email);
         Gson gson = new Gson();
         String json = gson.toJson(myUser);
         System.out.println("JSON: " +json);
         String json2 = gson.toJson(event1);
-        System.out.println(json2);
+        System.out.println(json2);*/
+
+        BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+        System.out.println("PASS: " + b.encode("admin"));
     }
 }

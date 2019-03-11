@@ -1,5 +1,7 @@
 package beans.models;
 
+import org.apache.log4j.Logger;
+
 import java.time.LocalDate;
 
 /**
@@ -10,8 +12,9 @@ import java.time.LocalDate;
  */
 public class User {
 
-    private static final String DEFAULT_ROLE = "USER_ROLE,";
-    private static final String DELIMETER = ",";
+    private final static Logger LOG = Logger.getLogger(User.class);
+    private static final String DEFAULT_ROLE = "ROLE_USER";
+    private static final String DELIMETER = ", ";
 
     private long      id;
     private String    email;
@@ -21,6 +24,7 @@ public class User {
     private String role;
 
     public User() {
+
     }
 
     public User(long id, String email, String name, LocalDate birthday) {
@@ -28,6 +32,7 @@ public class User {
         this.email = email;
         this.name = name;
         this.birthday = birthday;
+        this.password = email;
         this.role = DEFAULT_ROLE;
     }
 
@@ -36,7 +41,10 @@ public class User {
         this.name = name;
         this.birthday = birthday;
         this.role = DEFAULT_ROLE;
-        setRole(role);
+        if(!role.equals("ROLE_USER")){
+            this.role +=  DELIMETER + role;
+        }
+        this.password = email;
     }
 
     public User(String email, String name, LocalDate birthday, String password, String role) {
@@ -45,7 +53,10 @@ public class User {
         this.birthday = birthday;
         this.password = password;
         this.role = DEFAULT_ROLE;
-        setRole(role);
+        if(!role.equals("ROLE_USER")){
+            this.role +=  DELIMETER + role;
+        }
+
     }
 
     public User(String email, String name, LocalDate birthday) {
@@ -96,13 +107,23 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
+    public void setRole(String role) {
 
-    public void setRole(String role)
-    {
-        this.role += role+DELIMETER;;
+        if(!role.equals("ROLE_USER") && this.role==null){
+            this.role=DEFAULT_ROLE + DELIMETER + role;
+        }
+        else if(this.role==null && role.equals("ROLE_USER")){
+            this.role=DEFAULT_ROLE;
+        }
+        else if(!role.equals("ROLE_USER"))
+        {
+            this.role +=  DELIMETER + role;
+
+        }
+
+    }
+    public String getRole() {
+        return this.role;
     }
 
     @Override
@@ -139,6 +160,8 @@ public class User {
                "id=" + id +
                ", email='" + email + '\'' +
                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                ", birthday=" + birthday +
                '}';
     }

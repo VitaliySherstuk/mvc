@@ -11,12 +11,9 @@ import java.time.temporal.ChronoUnit;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 2:16 AM
- */
+
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = beans.configuration.TestStrategiesConfiguration.class)
 public class BirthdayStrategyTest {

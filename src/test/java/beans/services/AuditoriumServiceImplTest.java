@@ -19,12 +19,8 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 1:23 PM
- */
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class, beans.configuration.TestAuditoriumConfiguration.class})
 @Transactional

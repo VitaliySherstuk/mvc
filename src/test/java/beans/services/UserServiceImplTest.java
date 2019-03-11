@@ -25,12 +25,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 8:02 PM
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class, TestUserServiceConfiguration.class})
 @Transactional
