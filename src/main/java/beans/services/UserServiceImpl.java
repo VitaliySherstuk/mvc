@@ -24,13 +24,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
 
-    @Autowired
-    @Qualifier("encoder")
-    public BCryptPasswordEncoder passwordEncoder;
+
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO) {
+    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO,  @Qualifier("encoder") BCryptPasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User register(

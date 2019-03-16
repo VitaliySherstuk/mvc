@@ -2,13 +2,16 @@ package beans.services;
 
 import beans.daos.BookingDAO;
 import beans.models.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -26,11 +29,16 @@ import java.util.stream.Collectors;
 @Transactional
 public class BookingServiceImpl implements BookingService {
 
+    private Logger LOG = Logger.getLogger(BookingServiceImpl.class);
     private final EventService      eventService;
     private final AuditoriumService auditoriumService;
     private final UserService       userService;
     private final BookingDAO        bookingDAO;
     private final DiscountService   discountService;
+
+
+    private UserAccountService userAccountService;
+
     final         int               minSeatNumber;
     final         double            vipSeatPriceMultiplier;
     final         double            highRatedPriceMultiplier;
@@ -45,7 +53,8 @@ public class BookingServiceImpl implements BookingService {
                               @Value("${min.seat.number}") int minSeatNumber,
                               @Value("${vip.seat.price.multiplier}") double vipSeatPriceMultiplier,
                               @Value("${high.rate.price.multiplier}") double highRatedPriceMultiplier,
-                              @Value("${def.rate.price.multiplier}") double defaultRateMultiplier) {
+                              @Value("${def.rate.price.multiplier}") double defaultRateMultiplier,
+                              @Qualifier("userAccountServiceImpl") UserAccountService userAccountService) {
         this.eventService = eventService;
         this.auditoriumService = auditoriumService;
         this.userService = userService;
@@ -55,6 +64,7 @@ public class BookingServiceImpl implements BookingService {
         this.vipSeatPriceMultiplier = vipSeatPriceMultiplier;
         this.highRatedPriceMultiplier = highRatedPriceMultiplier;
         this.defaultRateMultiplier = defaultRateMultiplier;
+        this.userAccountService = userAccountService;
     }
 
     @Override
@@ -128,6 +138,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public Ticket bookTicket(User user, Ticket ticket) {
         if (Objects.isNull(user)) {
             throw new NullPointerException("User is [null]");
@@ -141,11 +152,18 @@ public class BookingServiceImpl implements BookingService {
         boolean seatsAreAlreadyBooked = bookedTickets.stream().filter(bookedTicket -> ticket.getSeatsList().stream().filter(
                 bookedTicket.getSeatsList() :: contains).findAny().isPresent()).findAny().isPresent();
 
-        if (!seatsAreAlreadyBooked)
+        if (!seatsAreAlreadyBooked) {
+            UserAccount userAccount = userAccountService.getById(user.getId());
+            BigDecimal moneyBefore = userAccount.getMoney();
+            LOG.info(moneyBefore);
+            BigDecimal moneyAfterBuying = moneyBefore.subtract(BigDecimal.valueOf(ticket.getPrice()));
+            userAccount.setMoney(moneyAfterBuying);
+            LOG.info(userAccount);
+            userAccountService.updateUserAccount(userAccount);
             bookingDAO.create(user, ticket);
-        else
+        }else {
             throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
-
+        }
         return ticket;
     }
 

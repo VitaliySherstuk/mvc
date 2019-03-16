@@ -17,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -47,7 +48,9 @@ public class EventController {
                            @RequestParam("basePrice") String basePrice,
                            @RequestParam("date") String date,
                            @RequestParam("time") String time,
-                           @RequestParam("auditorium") String auditorium, Model model){
+                           @RequestParam("auditorium") String auditorium,
+                           @RequestParam("ticketPrice") String ticketPrice,
+                           Model model){
         LOG.info("eventName: " + eventName);
         LOG.info("rate: " + rate);
         LOG.info("basePrice: " + basePrice);
@@ -55,12 +58,13 @@ public class EventController {
         LOG.info("time: " + time);
         LOG.info("auditorium: " + auditorium);
         LOG.info("audit from service: " + auditoriumService.getByName(auditorium));
+        LOG.info("ticketPrice");
 
         DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm");
         Event event = new Event(eventName, getEnumFromRequest(rate), Double.valueOf(basePrice),
                 LocalDateTime.of(LocalDate.parse(date, formatterDate), LocalTime.parse(time, formatterTime)),
-                auditoriumService.getByName(auditorium));
+                auditoriumService.getByName(auditorium), BigDecimal.valueOf(Long.valueOf(ticketPrice)));
         eventService.create(event);
         model.addAttribute("message", true);
         Gson gson = new Gson();

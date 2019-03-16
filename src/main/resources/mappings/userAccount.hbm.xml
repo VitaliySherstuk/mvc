@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="beans.models">
+
+    <class name="UserAccount" table="USER_ACCOUNT">
+        <id name="id" column="ID">
+            <generator class="identity"/>
+        </id>
+        <property name="money" column="MONEY" type="java.math.BigDecimal"/>
+    </class>
+
+</hibernate-mapping>

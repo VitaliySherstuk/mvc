@@ -2,7 +2,7 @@
 
     <head>
         <title>SpringMVC</title>
-        <link href="/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
         <div id="linkHomePage">

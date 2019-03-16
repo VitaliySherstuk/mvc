@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
         <title>SpringMVC</title>
-        <link href="/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
         <div id="linkHomePage">
@@ -47,6 +47,9 @@
                         <input id="auditorium_yellow_hall" name="auditorium" type="radio" value="Yellow hall"/>
                         <label for="auditorium_yellow_hall">Yellow Hall</label>
                     </div>
+                </div>
+                <div>
+                    <input id="ticketPrice" type="text" name="ticketPrice" placeholder="ticketPrice"/>
                 </div>
                 <div>
                     <input id="submit" name="submit" type="submit" placeholder="submit"/>

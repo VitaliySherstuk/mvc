@@ -25,7 +25,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-       /* ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
 
         AuditoriumService auditoriumService = (AuditoriumService) ctx.getBean("auditoriumServiceImpl");
@@ -135,7 +135,7 @@ public class Main {
         System.out.println();
         System.out.println("DiscountAspect.getDiscountStatistics() = " + DiscountAspect.getDiscountStatistics());
         System.out.println();
-        System.out.println("LuckyWinnerAspect.getLuckyUsers() = " + LuckyWinnerAspect.getLuckyUsers());*/
+        System.out.println("LuckyWinnerAspect.getLuckyUsers() = " + LuckyWinnerAspect.getLuckyUsers());
 
         /*creating JSON Event and User*/
 
@@ -146,7 +146,5 @@ public class Main {
         String json2 = gson.toJson(event1);
         System.out.println(json2);*/
 
-        BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-        System.out.println("PASS: " + b.encode("admin"));
     }
 }

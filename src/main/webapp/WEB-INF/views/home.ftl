@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
         <title>SpringMVC</title>
-        <link href="/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
         <div>
@@ -20,8 +20,12 @@
              <a href="/booking">Booking</a>
         </div>
         <div>
-                     <a href="/load">Load from file</a>
-                </div>
+             <a href="/load">Load from file</a>
+        </div>
+
+        <div>
+             <a href="/account">Account</a>
+        </div>
         </br>
         </br>
         <div>

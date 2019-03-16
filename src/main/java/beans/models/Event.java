@@ -1,5 +1,6 @@
 package beans.models;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -16,12 +17,17 @@ public class Event {
     private double        basePrice;
     private LocalDateTime dateTime;
     private Auditorium    auditorium;
+    private BigDecimal ticketPrice;
 
     public Event() {
     }
 
     public Event(String name, Rate rate, double basePrice, LocalDateTime dateTime, Auditorium auditorium) {
         this(-1, name, rate, basePrice, dateTime, auditorium);
+    }
+
+    public Event(String name, Rate rate, double basePrice, LocalDateTime dateTime, Auditorium auditorium, BigDecimal ticketPrice) {
+        this(-1, name, rate, basePrice, dateTime, auditorium, ticketPrice);
     }
 
     public Event(long id, String name, Rate rate, double basePrice, LocalDateTime dateTime, Auditorium auditorium) {
@@ -31,6 +37,16 @@ public class Event {
         this.basePrice = basePrice;
         this.dateTime = dateTime;
         this.auditorium = auditorium;
+    }
+
+    public Event(long id, String name, Rate rate, double basePrice, LocalDateTime dateTime, Auditorium auditorium, BigDecimal ticketPrice) {
+        this.id = id;
+        this.name = name;
+        this.rate = rate;
+        this.basePrice = basePrice;
+        this.dateTime = dateTime;
+        this.auditorium = auditorium;
+        this.ticketPrice = ticketPrice;
     }
 
     public Event withId(Long eventId) {
@@ -83,6 +99,14 @@ public class Event {
 
     public void setAuditorium(Auditorium auditorium) {
         this.auditorium = auditorium;
+    }
+
+    public BigDecimal getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(BigDecimal ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     @Override
