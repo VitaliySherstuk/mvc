@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
  */
 @Service("bookingServiceImpl")
 @PropertySource({"classpath:strategies/booking.properties"})
-@Transactional
 public class BookingServiceImpl implements BookingService {
 
     private Logger LOG = Logger.getLogger(BookingServiceImpl.class);
@@ -168,6 +167,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public List<Ticket> getTicketsForEvent(String event, String auditoriumName, LocalDateTime date) {
         final Auditorium auditorium = auditoriumService.getByName(auditoriumName);
         final Event foundEvent = eventService.getEvent(event, auditorium, date);
