@@ -7,6 +7,8 @@ import beans.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,7 @@ public class UserAccountController {
     UserAccountService userAccountService;
 
     @RequestMapping(method = RequestMethod.GET)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public ModelAndView openAccountPage(Principal principal) {
 
         ModelAndView mv = new ModelAndView("account");
@@ -43,8 +46,8 @@ public class UserAccountController {
         return mv;
     }
 
-
     @RequestMapping(path = "/replenish", method = RequestMethod.POST)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public String replenishAccount(Principal principal,
                                    @RequestParam("amount") String amount){
 

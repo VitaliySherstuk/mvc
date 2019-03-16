@@ -138,7 +138,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Ticket bookTicket(User user, Ticket ticket) {
         if (Objects.isNull(user)) {
             throw new NullPointerException("User is [null]");
