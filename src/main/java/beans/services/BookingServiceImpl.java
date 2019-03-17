@@ -153,6 +153,7 @@ public class BookingServiceImpl implements BookingService {
 
         if (!seatsAreAlreadyBooked) {
             UserAccount userAccount = userAccountService.getById(user.getId());
+            LOG.info("userAccount: "+userAccount);
             BigDecimal moneyBefore = userAccount.getMoney();
             LOG.info(moneyBefore);
             BigDecimal moneyAfterBuying = moneyBefore.subtract(BigDecimal.valueOf(ticket.getPrice()));
@@ -167,7 +168,6 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
     public List<Ticket> getTicketsForEvent(String event, String auditoriumName, LocalDateTime date) {
         final Auditorium auditorium = auditoriumService.getByName(auditoriumName);
         final Event foundEvent = eventService.getEvent(event, auditorium, date);

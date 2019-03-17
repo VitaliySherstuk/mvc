@@ -20,7 +20,7 @@ import java.util.Properties;
  * Time: 4:00 PM
  */
 @Configuration
-@EnableTransactionManagement
+/*@EnableTransactionManagement*/
 @PropertySource("classpath:db.properties")
 public class DbSessionFactory {
 
@@ -37,7 +37,7 @@ public class DbSessionFactory {
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
 
-    @Bean
+    /*@Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource);
@@ -50,13 +50,13 @@ public class DbSessionFactory {
                                                     "/mappings/ticket.hbm.xml", "/mappings/user.hbm.xml",
                                                     "/mappings/booking.hbm.xml", "/mappings/userAccount.hbm.xml");
         return localSessionFactoryBean;
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     @Autowired
     public HibernateTransactionManager transactionManager(org.hibernate.SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;
-    }
+    }*/
 }
